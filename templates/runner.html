@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Runner</title>
+	</head>
+	<body>
+		<h1>Runner: {{ matchup.runner }}  {{ matchup.room }}</h1>
+		<h2>Round: {{ matchup.roundNumber }}</h2>
+		<h2>Teams: {{ matchup.team1 }} vs. {{ matchup.team2 }}</h2>
+		<form method="post">
+
+			<h3>Winning Team:</h3>
+			<input type="radio" name="winnner" value="t1">{{ matchup.team1 }}
+			<input type="radio" name="winnner" value="t2">{{ matchup.team2 }}
+
+			<h3>Team 1: {{ matchup.team1 }}</h3>
+			<label>
+				Member 1: {{ team1.member1 }} - 
+				<input type="text" name="t1m1">
+			</label>
+			<label>
+				Member 2: {{ team1.member2 }} - 
+				<input type="text" name="t1m2">
+			</label>
+			<label>
+				Member 3: {{ team1.member3 }} - 
+				<input type="text" name="t1m3">
+			</label>
+			
+			<br><br>
+
+			<h3>Team 2: {{ matchup.team2 }}</h3>
+			<label>
+				Member 1: {{ team2.member1 }} - 
+				<input type="text" name="t2m1">
+			</label>
+			<label>
+				Member 2: {{ team2.member2 }} - 
+				<input type="text" name="t2m2">
+			</label>
+			<label>
+				Member 3: {{ team2.member3 }} - 
+				<input type="text" name="t2m3">
+			</label>
+
+			<hr>
+
+			<h3>Adjs:</h3>
+			<label>
+				{% for i in adjs %}
+					{{ i }} 
+					<input type="text" name="{{ i }}">		<!-- do something for the name -->
+				{% endfor %}
+			</label>
+			<br><br>
+			<input type="submit">
+		</form>
+	</body>
+</html>

@@ -1,0 +1,154 @@
+<!-- 1) input motions and round timings
+	2) register runners
+	3) make tabs and release 
+	4) Speaker Scores
+	5) Adj Scores
+	-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Admin Console</title>
+	</head>
+	<body>
+	<h1>Admin Console</h1>
+	<hr>
+	<h2>Set Rounds</h2>
+	<form method="post">
+		<label>
+			Round:
+			<input type="text" name="roundName" value="{{ roundName }}">
+		</label>
+		<br><br>
+		<label>
+			Date:
+			<input type="text" name="date" value="{{ date }}">
+		</label>
+		<br><br>
+		<label>
+			Time:
+			<input type="text" name="time" value="{{ time }}">
+		</label>
+		<br><br>
+		<input type="submit" value="Set Round" name="submitType">
+		<br><br>
+	</form>
+	<h3>Rounds Set</h3>
+	<ol>
+		{% for i in rounds %}
+			<li>{{ i.roundName }} | {{ i.date }} | {{ i.time }}</li>
+		{% endfor %}
+	</ol>
+	<hr>
+	<h2>Release Motions</h2>
+	<form method="post">
+		<select name="roundName">
+			<option selected="selected">Select Round</option>
+			{% for i in rounds %}
+				<option>{{ i.roundName }}</option>
+			{% endfor %}
+		</select>
+		<br><br>
+		<label>
+			Motions:<br>
+			<textarea name="motion"></textarea>
+		</label>
+		<br><br>
+		<input type="submit" value="Release Motions" name="submitType">
+	</form>
+	<h3>Motions Set</h3>
+	<ol>
+		{% for i in rounds %}
+			<li>{{ i.roundName }} | {{ i.motions }}</li>
+		{% endfor %}
+	</ol>
+	<hr>
+	<h2>Register Runners:</h2>
+	<form method="post">
+		<label>
+			Name: 
+			<input type="text" name="runnerName">
+		</label>
+		<br><br>
+		<label>
+			User ID:
+			<input type="text" name="rID">
+		</label>
+		<br><br>
+		<label>
+			Room Number:
+			<input type="text" name="room">
+		</label>
+		<br><br>
+		<input type="submit" value="Register Runner" name="submitType">
+	</form>
+	<h3>Runners Registered</h3>
+	<ol>
+		{% for i in runners %}
+			<li>{{ i.name }} : {{ i.room }}</li>
+		{% endfor %}
+	</ol>
+	<hr>
+	<h2>Tabs</h2>
+	<form method="post">
+		<select name='nextRound'>
+			{% for i in rounds %}
+				<option>{{ i.roundName }}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" name="submitType" value="Tabs">
+	</form>
+	<table>
+		{% for i in matchups %}
+			<tr>
+				<td>{{ i.roundName }}</td>
+				<td>{{ i.team1 }}</td>
+				<td>{{ i.team2 }}</td>
+				<td>{{ i.adjs }}</td>
+				<td>{{ i.runner }}</td>
+				<td>{{ i.room }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<hr>
+	<h2>Speaker Scores</h2>
+	<table>
+		{% for i in debaters %}
+			<tr>
+				<td>{{ i.name }}</td>
+				<td>{{ i.totalScore }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<hr>
+	<h2>Adj Scores</h2>
+	<table>
+		{% for i in adjs %}
+			<tr>
+				<td>{{ i.name }}</td>
+				<td>{{ i.totalScore }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+	<hr>
+	<h2>Master Console</h2>
+	<form method="post">
+		Delete Team:
+		<select name="deleteTeam">
+			{% for i in teams %}
+				<option>{{ i.teamName }}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" name="submitType" value="Delete Team">
+	</form>
+	<br>
+	<form method="post">
+		Delete Adjudicator:
+		<select name="deleteAdj">
+			{% for i in adjs %}
+				<option>{{ i.name }}</option>
+			{% endfor %}
+		</select>
+		<input type="submit" name="submitType" value="Delete Adjudicator">
+	</form>
+	</body>
+</html>

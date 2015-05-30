@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration Desk</title>
+	</head>
+	<body>
+	<h1>Welcome to the Reg Desk</h1>
+
+	<h2>Team Reg:</h2>
+	<form method="post">
+		<label>
+			Team Name: 
+			<input type="text" name="teamName" value="{{ teamName }}">
+		</label>
+		<br><br>
+		<label>
+			Member 1:
+			<select name="member1">
+				<option selected="selected">Select</option>
+			{% for member in debaters %} 
+				<option>{{ member.name }}</option>
+			{% endfor %}
+			</select>
+		</label>
+		<label>
+			Member 2:
+			<select name="member2">
+				<option selected="selected">Select</option>
+			{% for member in debaters %} 
+				<option>{{ member.name }}</option>
+			{% endfor %}
+			</select>
+		</label>
+		<label>
+			Member 3:
+			<select name="member3">
+				<option selected="selected">Select</option>
+			{% for member in debaters %} 
+				<option>{{ member.name }}</option>
+			{% endfor %}
+			</select>
+		</label>
+		<br><br>
+		<label>
+			Institute:
+			<select name="institute">
+				<option selected="selected">Select</option>
+			{% for institute in debInstitutes %} 
+				<option>{{ institute }}</option>
+			{% endfor %}
+			</select>
+		</label>
+		<br><br>
+		<input type="submit" name="reg" value="Register Team">
+	</form>
+
+	<hr>
+
+	<h2>Adj Reg:</h2>
+	<form method="post">
+		<label>
+			Name:
+			<select name="name">
+					<option selected="selected">Select</option>
+				{% for member in adjudicators %} 
+					<option>{{ member.name }}</option>
+				{% endfor %}
+			</select>
+		</label>
+		<label>
+			Institute:
+			<select name="institute">
+				<option selected="selected">Select</option>
+			{% for institute in adjInstitutes %} 
+				<option>{{ institute }}</option>
+			{% endfor %}
+			</select>
+		</label>
+		<br><br>
+		<input type="submit" name="reg" value="Register Adjudicator">
+	</form>
+	<hr>
+	<h2>Registered Teams:</h2>
+	<ol>
+		{% for team in teams %}
+			<li>{{ team.teamName }}: {{ team.member1 }}, {{ team.member2 }}, {{ team.member3 }} [{{ team.institute }}] </li>
+		{% endfor %}
+	</ol>
+	<hr>
+	<h2>Registered Adjs:</h2>
+	<ol>
+		{% for adj in adjudicators %}
+			{% if adj.registered == True %}
+				<li>{{ adj.name }} [{{ adj.institute }}]</li>
+			{% endif %}
+		{% endfor %}
+	</ol>
+	</body>
+</html>

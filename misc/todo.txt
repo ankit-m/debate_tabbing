@@ -1,0 +1,19 @@
+1. Check validity each input
+	a. empty
+	b. valid characters
+	c. escaping
+	d. length
+
+2. Password Hashing
+
+3. Error and success messages 
+
+4. Redundancy in Registrations
+
+8. odd adjs per room
+
+9. Breaks management
+
+10. check if all runners have entered scores
+
+11. next round method

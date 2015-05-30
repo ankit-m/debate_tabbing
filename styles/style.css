@@ -1,0 +1,60 @@
+h1, h2, h3{
+	text-align: center;
+}
+#headline {
+  	padding: 1em;
+  	box-sizing: border-box;
+	color: white;
+	/*background-color: #B9121B;*/
+	background-image: url('images/back.jpg');
+	background-size: cover;
+}
+#nextEvent{
+	background-color: #4C1B1B;
+	padding: 1em;
+}
+#nextEvent h2{
+	color: white;
+	text-align: center;
+}
+#nextEvent h3{
+	color: #F6E497;
+	text-align: center;
+}
+#cas{
+	background-color: #F6E497;
+	padding: 1em;
+}
+#breaks{
+	background-color: #FCFAE1;
+	padding: 1em;
+}
+#prize{
+	background-color: #BD8D46;
+	padding: 1em;
+}
+#headline #intro{
+	float: left;
+	width: 50%;
+	padding: 20px;
+}
+#headline #register{
+	float: right;
+	padding: 20px;
+	box-sizing: border-box;
+	width: 40%;
+	position: relative;
+}
+#headline br{
+	clear: both;
+}
+body{
+	margin-top: 0;
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+.container{
+	margin: auto;
+	max-width: 800px;
+}
